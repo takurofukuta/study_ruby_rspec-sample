@@ -5,15 +5,13 @@ require_relative '../lib/user'
 RSpec.describe User do
   # テストの内容
   describe "Userクラスの情報" do
-    let(:params) {{age: 31, hobby: "Soccer"}}
+    let(:user) { User.new(params) }
+    let(:params) {{name: name, age: 31, hobby: "Soccer"}}
     context "名前がTanakaの場合" do
-      before do
-        params.merge!(name: "Tanaka")
-      end
+      let(:name) { "Tanaka" }
       # テストの期待値
       it "return user name" do
         # テスト対象となるUserクラスをオブジェクト化
-        user = User.new(params)
         # テストコード（名前が期待値と一致することを確認）
         expect(user.name).to eq "Tanaka"
       end
@@ -29,13 +27,10 @@ RSpec.describe User do
       end
     end
     context "名前がItoの場合" do
-      before do
-        params.merge!(name: "Ito")
-      end
+      let(:name) { "Ito" }
       # テストの期待値
       it "return user name" do
         # テスト対象となるUserクラスをオブジェクト化
-        user = User.new(params)
         # テストコード（名前が期待値と一致することを確認）
         expect(user.name).to eq "Ito"
       end
